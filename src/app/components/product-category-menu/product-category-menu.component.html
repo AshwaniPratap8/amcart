@@ -1,0 +1,44 @@
+<div class="menu-sidebar-content js-scrollbar1">
+    <nav class="navbar-sidebar">
+        <ul class="list-unstyled navbar-list">
+            <li>
+                <a routerLink="/categoryName/Men" routerLinkActive="active-link" style="text-decoration:none">Men</a>
+            </li>
+            <ul>
+                <div *ngFor="let productCategory of productCategorySubcategories">
+                    <div *ngIf='productCategory.mainCategory.startsWith("Men")'>
+                        <li><a routerLink="/categoryName/Men-{{ productCategory.subcategory }}"
+                                routerLinkActive="active-link" style="text-decoration:none"> {{
+                                productCategory.subcategory }}</a></li>
+                        <div *ngFor="let subCategory of productCategory.subSubCategories">
+                            <ul>
+                                <li> <a routerLink="/categoryName/Men-{{ productCategory.subcategory }}-{{ subCategory }}"
+                                        routerLinkActive="active-link" style="text-decoration:none"> {{
+                                        subCategory }}</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </ul>
+            <li>
+                <a routerLink="/categoryName/Women" routerLinkActive="active-link" style="text-decoration:none">Women</a>
+            </li>
+            <ul>
+                <div *ngFor="let productCategory of productCategorySubcategories">
+                    <div *ngIf='productCategory.mainCategory.startsWith("Women")'>
+                        <li><a routerLink="/categoryName/Women-{{ productCategory.subcategory }}"
+                                routerLinkActive="active-link" style="text-decoration:none"> {{
+                                productCategory.subcategory }}</a></li>
+                        <div *ngFor="let subCategory of productCategory.subSubCategories">
+                            <ul>
+                                <li> <a routerLink="/categoryName/Women-{{ productCategory.subcategory }}-{{ subCategory }}"
+                                        routerLinkActive="active-link" style="text-decoration:none"> {{
+                                        subCategory }}</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </ul>
+        </ul>
+    </nav>
+</div>

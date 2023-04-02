@@ -1,0 +1,3 @@
+<p *ngFor="let order of orders">
+    {{ order.orderId}} {{order.orderedProduct}} {{order.orderDate}} {{order.orderAmount | currency: 'USD'}}
+</p>
