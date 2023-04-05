@@ -1,0 +1,36 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: amcart-deployment
+  labels:
+    app: amcart-aps
+spec:
+  template:
+    metadata:
+      name: amcart-pod
+      labels:
+        app: amcart
+        type: frontend
+        pod: amcart-pod
+    spec:
+      containers:
+        -  name: amcart-container
+           image: amcart
+  replicas: 2
+  selector:
+    matchLabels:
+      app: amcart
+      type: frontend
+---
+apiVersion: v1
+kind: Service
+metadata:
+ name: app-loadbalancer-service
+spec:
+ type: ClusterIP
+ ports:
+ - targetPort: 8080
+   port: 80
+ selector:
+  pod: amcart-pod
